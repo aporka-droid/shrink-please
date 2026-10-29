@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F3EC">
+  <meta name="description" content="Make your images lighter. Compress and resize JPG, PNG and WebP images privately in your browser. Free, with no uploads or accounts.">
+  <title>Shrink Please — Free, private image compressor</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="Shrink Please home"><img src="assets/favicon.svg" class="brand-mark" width="34" height="34" alt=""><span>shrinkplease<span class="brand-dot">.</span></span></a>
+    <span class="header-label">Free image compressor</span>
+  </header>
+  <main class="wrap">
+    <section class="intro">
+      <div><div class="eyebrow"><span class="tiny-square"></span> LESS WEIGHT. SAME GOOD LOOKS.</div><h1>Make your images<br><span class="highlight">lighter.</span></h1><p>Compress and resize your images in seconds.<br>No uploads, no accounts, just smaller files.</p></div>
+    </section>
+    <section class="workstation" aria-label="Image compression workspace">
+      <div class="workspace-top"><span><span class="status-dot"></span> YOUR IMAGE WORKSPACE</span></div>
+      <div class="workspace-grid">
+        <div class="controls-panel">
+          <div class="section-label"><span>THE INPUT</span></div>
+          <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" hidden>
+          <button id="dropzone" class="dropzone" type="button" aria-label="Choose a JPG, PNG or WebP image">
+            <svg class="upload-art" viewBox="0 0 200 130" aria-hidden="true"><rect x="33" y="17" width="113" height="87" rx="8" fill="#F5F3EC" stroke="#23354B" stroke-width="2.5" transform="rotate(-10 89 60)"/><path d="m42 83 29-32 26 25 18-13 24 23" fill="none" stroke="#23354B" stroke-width="2.5" transform="rotate(-10 89 60)"/><circle cx="113" cy="39" r="9" fill="#D8EF9B" stroke="#23354B" stroke-width="2"/><rect x="83" y="58" width="79" height="59" rx="6" fill="#A8C7E8" stroke="#23354B" stroke-width="2.5"/><path d="m92 105 20-23 15 15 10-10 17 18" fill="none" stroke="#23354B" stroke-width="2.5"/></svg>
+            <strong id="upload-title">Drop your images here</strong><span id="upload-subtitle">or <u>click to browse</u></span><span class="format-tags">JPG <i>·</i> PNG <i>·</i> WebP <i> / </i> UP TO 30 MB</span>
+          </button>
+          <div id="settings" class="settings" hidden>
+            <div class="file-row"><span id="filename"></span><button id="replace" type="button" class="text-button">Replace ↗</button></div>
+            <label class="field-label" for="format">Output format</label>
+            <select id="format"><option value="original">Original format</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
+            <div class="quality-heading"><label class="field-label" for="quality">Quality</label><output id="quality-value" for="quality">78%</output></div>
+            <input id="quality" type="range" min="1" max="100" value="78">
+            <p class="field-hint" id="quality-hint">A sweet spot between size and detail.</p>
+            <div class="resize-heading"><span class="field-label">Dimensions</span><button id="reset-size" type="button" class="text-button">Reset size ↺</button></div>
+            <div class="dimensions"><label>Width<input id="width" type="number" inputmode="numeric" min="1" step="1" aria-label="Output width in pixels"></label><button id="lock" class="lock-button" type="button" aria-pressed="true" aria-label="Maintain aspect ratio">↔</button><label>Height<input id="height" type="number" inputmode="numeric" min="1" step="1" aria-label="Output height in pixels"></label><span class="unit">px</span></div>
+            <p class="field-hint">Original size is the maximum. Keep it crisp.</p>
+            <p id="jpeg-note" class="format-note" hidden>JPEG doesn’t support transparency. Transparent areas become white.</p>
+          </div>
+          <div class="device-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Your files never leave this browser.</div>
+        </div>
+        <div class="preview-panel">
+          <div class="section-label"><span>THE BIG PICTURE</span></div>
+          <div id="preview-empty" class="preview-empty"><div class="empty-graphic"><svg viewBox="0 0 140 108" aria-hidden="true"><rect x="13" y="12" width="108" height="79" rx="6"/><circle cx="88" cy="35" r="9"/><path d="m14 76 29-29 24 25 15-16 39 34"/></svg></div><h2>Big potential.<br>Smaller footprint.</h2><p>Your before & after will appear here.</p><span class="empty-caption">A GOOD IMAGE, JUST A LITTLE LIGHTER.</span></div>
+          <div id="comparison" class="comparison" hidden>
+            <img id="processed-image" alt="Compressed image preview" draggable="false"><img id="original-image" class="original-image" alt="Original image preview" draggable="false">
+            <span class="preview-label original-label">Original</span><span class="preview-label compressed-label">Compressed</span><div class="comparison-line"><span>‹ ›</span></div>
+            <input id="comparison-slider" aria-label="Compare original and compressed image" type="range" min="0" max="100" value="50">
+          </div>
+          <div class="preview-bottom"><span aria-hidden="true">↔</span></div>
+        </div>
+      </div>
+      <div id="results" class="results" hidden>
+        <div class="savings"><strong id="savings-number">—</strong><span id="savings-label">SMALLER</span></div>
+        <div class="result-detail"><span>ORIGINAL</span><strong id="original-size">—</strong><small id="original-dimensions">—</small></div><span class="result-arrow" aria-hidden="true">→</span><div class="result-detail"><span>COMPRESSED</span><strong id="output-size">—</strong><small id="output-dimensions">—</small></div>
+        <div class="download-actions"><button id="download" class="primary-button" type="button" disabled><span aria-hidden="true">↓</span> Download compressed image</button><button id="another" class="text-button" type="button">Compress another image ↗</button></div>
+      </div>
+      <div id="empty-bottom" class="empty-bottom"><span>SMALLER FILES. FASTER WEBSITES. HAPPIER HARD DRIVES.</span></div>
+    </section>
+    <div class="benefits"><span><b aria-hidden="true">✓</b> Free. Always.</span><span><b aria-hidden="true">✓</b> No sign-up needed</span><span><b aria-hidden="true">✓</b> Made for your browser</span></div>
+    <p id="status" class="sr-only" role="status" aria-live="polite"></p><div id="error" class="toast" role="alert" hidden></div>
+  </main>
+  <footer id="collection" class="wrap"><span>A tool from <a class="footer-brand" href="https://please-dashboard.vercel.app/" rel="noopener noreferrer">please.</a></span><a href="https://github.com/aporka-droid/shrink-please">GitHub</a></footer>
+  <aside id="privacy-consent" class="privacy-consent" aria-labelledby="privacy-title">
+    <h2 id="privacy-title">Your images stay yours.</h2>
+    <p>Images are compressed entirely on your device. We never upload or store them.</p>
+    <button id="privacy-dismiss" type="button">Got it</button>
+  </aside>
+</body>
+</html>
