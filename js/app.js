@@ -41,7 +41,6 @@ function renderResult() {
   $('output-size').textContent = formatBytes(result.blob.size);
   $('original-dimensions').textContent = `${source.width} × ${source.height} · ${EXTENSIONS[source.type].toUpperCase()}`;
   $('output-dimensions').textContent = `${result.width} × ${result.height} · ${EXTENSIONS[result.type].toUpperCase()}`;
-  $('preview-caption').textContent = 'Drag the divider to see the difference.';
   announce(`Image ready. ${formatBytes(result.blob.size)}, ${value.toFixed(1)} percent ${reduction < 0 ? 'larger' : 'smaller'}. ${result.width} by ${result.height} pixels.`);
 }
 async function processImage(id) {
@@ -123,7 +122,6 @@ function reset() {
   if (source) source.image.close();
   source = result = null; preview.clear(); busy(false);
   $('settings').hidden = true; $('dropzone').hidden = false; $('results').hidden = true; $('empty-bottom').hidden = false;
-  $('preview-caption').textContent = 'A little less size. All the possibility.';
   $('error').hidden = true;
   $('dropzone').focus(); announce('Ready for another image.');
 }
