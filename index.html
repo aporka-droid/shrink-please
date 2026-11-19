@@ -37,17 +37,17 @@
             <select id="format"><option value="original">Original format</option><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select>
             <div class="quality-heading"><label class="field-label" for="quality">Quality</label><output id="quality-value" for="quality">78%</output></div>
             <input id="quality" type="range" min="1" max="100" value="78">
-            <p class="field-hint" id="quality-hint">A sweet spot between size and detail.</p>
+            <p class="field-hint" id="quality-hint">Lower quality makes smaller files.</p>
             <div class="resize-heading"><span class="field-label">Dimensions</span><button id="reset-size" type="button" class="text-button">Reset size ↺</button></div>
             <div class="dimensions"><label>Width<input id="width" type="number" inputmode="numeric" min="1" step="1" aria-label="Output width in pixels"></label><button id="lock" class="lock-button" type="button" aria-pressed="true" aria-label="Maintain aspect ratio">↔</button><label>Height<input id="height" type="number" inputmode="numeric" min="1" step="1" aria-label="Output height in pixels"></label><span class="unit">px</span></div>
-            <p class="field-hint">Original size is the maximum. Keep it crisp.</p>
+            <p class="field-hint">Maximum: original dimensions.</p>
             <p id="jpeg-note" class="format-note" hidden>JPEG doesn’t support transparency. Transparent areas become white.</p>
           </div>
           <div class="device-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Your files never leave this browser.</div>
         </div>
         <div class="preview-panel">
           <div class="section-label"><span>THE BIG PICTURE</span></div>
-          <div id="preview-empty" class="preview-empty"><div class="empty-graphic"><svg viewBox="0 0 140 108" aria-hidden="true"><rect x="13" y="12" width="108" height="79" rx="6"/><circle cx="88" cy="35" r="9"/><path d="m14 76 29-29 24 25 15-16 39 34"/></svg></div><h2>Image preview</h2><p>Your before & after will appear here.</p><span class="empty-caption">A GOOD IMAGE, JUST A LITTLE LIGHTER.</span></div>
+          <div id="preview-empty" class="preview-empty"><div class="empty-graphic"><svg viewBox="0 0 140 108" aria-hidden="true"><rect x="13" y="12" width="108" height="79" rx="6"/><circle cx="88" cy="35" r="9"/><path d="m14 76 29-29 24 25 15-16 39 34"/></svg></div><h2>Image preview</h2></div>
           <div id="comparison" class="comparison" hidden>
             <img id="processed-image" alt="Compressed image preview" draggable="false"><img id="original-image" class="original-image" alt="Original image preview" draggable="false">
             <span class="preview-label original-label">Original</span><span class="preview-label compressed-label">Compressed</span><div class="comparison-line"><span>‹ ›</span></div>
@@ -61,7 +61,7 @@
         <div class="result-detail"><span>ORIGINAL</span><strong id="original-size">—</strong><small id="original-dimensions">—</small></div><span class="result-arrow" aria-hidden="true">→</span><div class="result-detail"><span>COMPRESSED</span><strong id="output-size">—</strong><small id="output-dimensions">—</small></div>
         <div class="download-actions"><button id="download" class="primary-button" type="button" disabled><span aria-hidden="true">↓</span> Download compressed image</button><button id="another" class="text-button" type="button">Compress another image ↗</button></div>
       </div>
-      <div id="empty-bottom" class="empty-bottom"><span>SMALLER FILES. FASTER WEBSITES. HAPPIER HARD DRIVES.</span></div>
+      <div id="empty-bottom" class="empty-bottom"></div>
     </section>
     <div class="benefits"><span><b aria-hidden="true">✓</b> Free. Always.</span><span><b aria-hidden="true">✓</b> No sign-up needed</span><span><b aria-hidden="true">✓</b> Made for your browser</span></div>
     <p id="status" class="sr-only" role="status" aria-live="polite"></p><div id="error" class="toast" role="alert" hidden></div>
