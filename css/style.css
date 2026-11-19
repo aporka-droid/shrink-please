@@ -637,11 +637,8 @@ input[type=range] {
   z-index:10
 }
 .privacy-consent {
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  z-index:9;
-  width:min(310px,calc(100vw - 36px));
+      width: min(100%, 100%);
+      margin: 20px auto;
   padding:18px;
   border:1.5px solid var(--navy);
   border-radius:10px;
@@ -740,12 +737,7 @@ input[type=range] {
   }
 }
 @media(max-width:720px) {
-  .privacy-consent {
-    right:14px;
-    bottom:14px;
-    width:min(310px,calc(100vw - 28px));
-    padding:16px
-  }
+
   .wrap {
     width:calc(100% - 32px)
   }
@@ -867,3 +859,6 @@ footer a {
 footer a:hover {
   text-decoration:underline;
 }
+
+.privacy-consent[hidden] { display: none; }
+.privacy-consent button { min-height: 44px; }
